@@ -1,0 +1,25 @@
+﻿question,intent
+When are the exams,exam
+Tell me the exam date,exam
+What is the exam schedule,exam
+What courses are available,courses
+Which courses does the college offer,courses
+Tell me about CSE course,courses
+What are the college timings,timing
+When does college start,timing
+What time does college close,timing
+When is the library open,library
+Tell me about library,library
+What are library timings,library
+Is hostel available,hostel
+Tell me about hostel,hostel
+Does the college have hostel,hostel
+What is the fee,fees
+Tell me about college fees,fees
+How can I pay my fees,fees
+What is the attendance requirement,attendance
+How much attendance is required,attendance
+What is the minimum attendance,attendance
+Tell me about placements,placement
+Does the college provide placements,placement
+What companies visit the college,placement

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit FAQ</title>
+</head>
+<body>
+
+<h2>Edit FAQ</h2>
+
+<form method="POST">
+
+    <input type="text" name="question"
+           value="{{ faq[1] }}" required><br><br>
+
+    <input type="text" name="answer"
+           value="{{ faq[2] }}" required><br><br>
+
+    <input type="text" name="intent"
+           value="{{ faq[3] }}" required><br><br>
+
+    <button type="submit">Update FAQ</button>
+
+</form>
+
+<br>
+
+<a href="/faq">Back to FAQ</a>
+
+</body>
+</html>

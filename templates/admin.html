@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Dashboard</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            background: #f4f6f8;
+            padding: 30px;
+        }
+
+        .container {
+            width: 900px;
+            margin: auto;
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            border: 1px solid #ccc;
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background: #007bff;
+            color: white;
+        }
+
+        .links {
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h2>🎓 Admin Dashboard</h2>
+
+    <h3>Student Chat History</h3>
+
+    <table>
+
+        <tr>
+            <th>ID</th>
+            <th>Username</th>
+            <th>Question</th>
+            <th>Answer</th>
+        </tr>
+
+        {% for chat in chats %}
+
+        <tr>
+            <td>{{ chat[0] }}</td>
+            <td>{{ chat[1] }}</td>
+            <td>{{ chat[2] }}</td>
+            <td>{{ chat[3] }}</td>
+        </tr>
+
+        {% endfor %}
+
+    </table>
+
+    
+    <br>
+
+    <a href="/faq">Manage FAQs</a> |
+    <a href="/chat">Student Chat</a> |
+    <a href="/logout">Logout</a>
+
+</div>
+
+</body>
+</html>

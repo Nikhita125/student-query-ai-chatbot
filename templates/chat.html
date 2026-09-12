@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Query AI Chatbot</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            background: #f2f2f2;
+            text-align: center;
+        }
+
+        .chatbox {
+            width: 600px;
+            margin: 50px auto;
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+        }
+
+        #answer {
+            margin: 20px;
+            padding: 15px;
+            background: #eee;
+            min-height: 30px;
+        }
+
+        input {
+            width: 70%;
+            padding: 12px;
+        }
+
+        button {
+            padding: 12px 20px;
+        }
+
+        a {
+            margin: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="chatbox">
+
+    <h1>🎓 Student Query AI Chatbot</h1>
+
+    <p>Welcome, {{ session["username"] }}</p>
+
+    <input id="question" placeholder="Ask your question...">
+
+    <button onclick="askQuestion()">Ask</button>
+
+    <button onclick="clearQuestion()">Clear</button>
+
+    <div id="answer">
+        Chatbot: How can I help you?
+    </div>
+
+    <br>
+
+    <a href="/admin">Admin Dashboard</a>
+    <a href="/faq">Manage FAQs</a>
+    <a href="/logout">Logout</a>
+
+</div>
+
+<script>
+
+function askQuestion() {
+
+    let question = document.getElementById("question").value;
+
+    fetch("/chat", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            question: question
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+
+        document.getElementById("answer").innerText =
+            "Chatbot: " + data.answer;
+
+    });
+}
+
+function clearQuestion() {
+
+    document.getElementById("question").value = "";
+
+    document.getElementById("answer").innerText =
+        "Chatbot: How can I help you?";
+}
+
+</script>
+
+</body>
+</html>

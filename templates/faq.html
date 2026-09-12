@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>FAQ Management</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            background: #f4f6f8;
+            padding: 30px;
+        }
+
+        .container {
+            width: 800px;
+            margin: auto;
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+        }
+
+        h2, h3 {
+            text-align: center;
+        }
+
+        input {
+            width: 95%;
+            padding: 10px;
+            margin: 5px 0;
+        }
+
+        button {
+            padding: 10px 20px;
+            background: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+
+        table {
+            width: 100%;
+            margin-top: 20px;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            border: 1px solid #ccc;
+            padding: 10px;
+        }
+
+        th {
+            background: #007bff;
+            color: white;
+        }
+
+        .links {
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h2>🎓 FAQ Management</h2>
+
+    <form method="POST" action="/add_faq">
+
+        <input type="text" name="question"
+               placeholder="Enter Question" required>
+
+        <input type="text" name="answer"
+               placeholder="Enter Answer" required>
+
+        <input type="text" name="intent"
+               placeholder="Enter Intent" required>
+
+        <button type="submit">Add FAQ</button>
+
+    </form>
+
+    <h3>Existing FAQs</h3>
+
+    <table>
+
+        <tr>
+            <th>ID</th>
+            <th>Question</th>
+            <th>Answer</th>
+            <th>Intent</th>
+            <th>Action</th>
+        </tr>
+
+        {% for faq in faqs %}
+
+        <tr>
+            <td>{{ faq[0] }}</td>
+            <td>{{ faq[1] }}</td>
+            <td>{{ faq[2] }}</td>
+            <td>{{ faq[3] }}</td>
+        <td>
+            <a href="/edit_faq/{{ faq[0] }}">Edit</a> |
+            <a href="/delete_faq/{{ faq[0] }}">Delete</a>
+        </td>
+        </tr>
+
+        {% endfor %}
+
+    </table>
+
+    <div class="links">
+        <a href="/chat">Back to Chat</a> |
+        <a href="/logout">Logout</a>
+    </div>
+
+</div>
+
+</body>
+</html>
