@@ -25,6 +25,26 @@ An AI-powered chatbot that helps students get answers to common college-related 
 * SQLite
 * Scikit-learn
 
+## Project Architecture
+
+Student
+↓
+Web Interface
+↓
+Flask Backend
+↓
+NLP Processing
+↓
+TF-IDF Vectorization
+↓
+Logistic Regression
+↓
+Intent Detection
+↓
+FAQ / Database
+↓
+Answer to Student
+
 ## How AI Works
 
 Student Question
