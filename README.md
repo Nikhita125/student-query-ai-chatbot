@@ -1,29 +1,54 @@
 # Student Query AI Chatbot System
 
-An AI-powered chatbot that helps students get answers to common college-related questions.
+An AI-powered chatbot that helps students get answers to common college-related questions using Natural Language Processing and Machine Learning.
+
+## Key Highlights
+
+- AI-powered student query classification
+- NLP-based text processing
+- TF-IDF feature extraction
+- Logistic Regression machine learning model
+- Confidence-based response handling
+- Student login and registration
+- Secure password hashing
+- SQLite database integration
+- Chat history tracking
+- Admin dashboard
+- FAQ management
+- Admin-only access control
 
 ## Features
 
-* Student Registration and Login
-* AI-based Question Classification
-* TF-IDF Text Vectorization
-* Logistic Regression
-* FAQ Management
-* Chat History
-* Admin Dashboard
-* SQLite Database
+- Student Registration and Login
+- AI-based Question Classification
+- TF-IDF Text Vectorization
+- Logistic Regression
+- FAQ Management
+- Chat History
+- Admin Dashboard
+- SQLite Database
 
 ## Technologies Used
 
-* Python
-* Flask
-* Machine Learning
-* NLP
-* HTML
-* CSS
-* JavaScript
-* SQLite
-* Scikit-learn
+- Python
+- Flask
+- Machine Learning
+- NLP
+- HTML
+- CSS
+- JavaScript
+- SQLite
+- Scikit-learn
+
+## Key Highlights
+
+- Uses Machine Learning for student question classification
+- Uses TF-IDF for text feature extraction
+- Uses Logistic Regression for intent prediction
+- Stores users and chat history using SQLite
+- Provides FAQ management for administrators
+- Provides an Admin Dashboard to monitor student queries
+- Supports multiple college-related student queries
 
 ## Project Architecture
 
@@ -70,14 +95,14 @@ Answer
 
 ## Main Queries
 
-* Exams
-* Courses
-* College Timing
-* Library
-* Hostel
-* Fees
-* Attendance
-* Placements
+- Exams
+- Courses
+- College Timing
+- Library
+- Hostel
+- Fees
+- Attendance
+- Placements
 
 ## How to Run
 
@@ -85,49 +110,3 @@ Install the required packages:
 
 ```bash
 pip install -r requirements.txt
-```
-
-Train the model:
-
-```bash
-python train_model.py
-```
-
-Run the application:
-
-```bash
-python app.py
-```
-
-Open in browser:
-
-http://127.0.0.1:5000
-
-## Future Enhancements
-
-* RAG-based document support
-* Voice-based queries
-* College PDF support
-* Cloud deployment
-
-## Project Purpose
-
-This project demonstrates the use of Python, Flask, NLP, Machine Learning, and SQLite to build an intelligent student support system.
-
-## Screenshots
-
-### Login
-![Login](login.png)
-
-### Register
-![Register](register.png)
-
-### Chatbot
-![Chatbot](chatbot.png)
-
-### Admin Dashboard
-![Admin Dashboard](admin.png)
-
-### FAQ Management
-![FAQ Management](faq.png)
-
