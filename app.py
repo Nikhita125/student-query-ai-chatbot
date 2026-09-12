@@ -162,6 +162,22 @@ def chat():
 
     return jsonify({"answer": answer})
 
+@app.route("/history")
+def history():
+
+    if "username" not in session:
+        return redirect("/login")
+
+    conn = sqlite3.connect("database/chatbot.db")
+
+    chats = conn.execute(
+        "SELECT question, answer FROM chat_history WHERE username=?",
+        (session["username"],)
+    ).fetchall()
+
+    conn.close()
+
+    return render_template("history.html", chats=chats)
 
 @app.route("/logout")
 def logout():
