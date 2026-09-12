@@ -126,6 +126,14 @@ def chat():
         return jsonify({"answer": "Please login first."})
 
     question = request.json["question"]
+    
+    probabilities = model.predict_proba([question])[0]
+    confidence = max(probabilities)
+
+    if confidence < 0.40:
+        return jsonify({
+        "answer": "Sorry, I don't understand your question. Please try asking about exams, courses, fees, attendance, library, hostel, timings, or placements."
+        })
 
     intent = model.predict([question])[0]
 
