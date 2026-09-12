@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, jsonify, redirect, session
 import joblib
 import sqlite3
+from werkzeug.security import generate_password_hash, check_password_hash
 
 app = Flask(__name__)
 app.secret_key = "student_chatbot_secret"
@@ -18,6 +19,7 @@ responses = {
     "placement": "Our college provides good placement opportunities."
 }
 
+
 @app.route("/")
 def home():
     return redirect("/login")
@@ -25,23 +27,29 @@ def home():
 
 @app.route("/register", methods=["GET", "POST"])
 def register():
+
     if request.method == "POST":
+
         username = request.form["username"]
         password = request.form["password"]
+
+        hashed_password = generate_password_hash(password)
 
         conn = sqlite3.connect("database/chatbot.db")
 
         try:
             conn.execute(
                 "INSERT INTO users (username, password) VALUES (?, ?)",
-                (username, password)
+                (username, hashed_password)
             )
             conn.commit()
+
         except sqlite3.IntegrityError:
             conn.close()
             return "Username already exists!"
 
         conn.close()
+
         return redirect("/login")
 
     return render_template("register.html")
@@ -49,22 +57,53 @@ def register():
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
+
     if request.method == "POST":
+
         username = request.form["username"]
         password = request.form["password"]
 
         conn = sqlite3.connect("database/chatbot.db")
 
         user = conn.execute(
-            "SELECT * FROM users WHERE username=? AND password=?",
-            (username, password)
+            "SELECT * FROM users WHERE username=?",
+            (username,)
         ).fetchone()
 
-        conn.close()
-
         if user:
-            session["username"] = username
-            return redirect("/chat")
+
+            stored_password = user[2]
+
+            try:
+                password_correct = check_password_hash(
+                    stored_password,
+                    password
+                )
+
+            except ValueError:
+                password_correct = False
+
+            # Convert old plain-text password to hashed password
+            if not password_correct and stored_password == password:
+
+                hashed_password = generate_password_hash(password)
+
+                conn.execute(
+                    "UPDATE users SET password=? WHERE username=?",
+                    (hashed_password, username)
+                )
+
+                conn.commit()
+
+                password_correct = True
+
+            conn.close()
+
+            if password_correct:
+                session["username"] = username
+                return redirect("/chat")
+
+        conn.close()
 
         return "Invalid username or password!"
 
@@ -73,10 +112,12 @@ def login():
 
 @app.route("/chat")
 def chat_page():
+
     if "username" not in session:
         return redirect("/login")
 
     return render_template("chat.html")
+
 
 @app.route("/chat", methods=["POST"])
 def chat():
@@ -104,7 +145,7 @@ def chat():
         )
 
     conn.execute(
-        "INSERT INTO chat_history (username, question, answer) VALUES (?, ?, ? )",
+        "INSERT INTO chat_history (username, question, answer) VALUES (?, ?, ?)",
         (session["username"], question, answer)
     )
 
@@ -114,12 +155,13 @@ def chat():
     return jsonify({"answer": answer})
 
 
-
-
 @app.route("/logout")
 def logout():
+
     session.clear()
+
     return redirect("/login")
+
 
 @app.route("/admin")
 def admin():
@@ -127,9 +169,11 @@ def admin():
     if "username" not in session:
         return redirect("/login")
 
+    if session["username"] != "admin":
+        return "Access denied. Admin only."
+
     conn = sqlite3.connect("database/chatbot.db")
 
-    
     chats = conn.execute(
         "SELECT id, username, question, answer FROM chat_history"
     ).fetchall()
@@ -138,8 +182,16 @@ def admin():
 
     return render_template("admin.html", chats=chats)
 
+
 @app.route("/faq")
 def faq():
+
+    if "username" not in session:
+        return redirect("/login")
+
+    if session["username"] != "admin":
+        return "Access denied. Admin only."
+
     conn = sqlite3.connect("database/chatbot.db")
 
     faqs = conn.execute(
@@ -149,6 +201,7 @@ def faq():
     conn.close()
 
     return render_template("faq.html", faqs=faqs)
+
 
 @app.route("/delete_faq/<int:faq_id>")
 def delete_faq(faq_id):
@@ -170,6 +223,7 @@ def delete_faq(faq_id):
     conn.close()
 
     return redirect("/faq")
+
 
 @app.route("/edit_faq/<int:faq_id>", methods=["GET", "POST"])
 def edit_faq(faq_id):
@@ -210,6 +264,13 @@ def edit_faq(faq_id):
 
 @app.route("/add_faq", methods=["POST"])
 def add_faq():
+
+    if "username" not in session:
+        return redirect("/login")
+
+    if session["username"] != "admin":
+        return "Access denied. Admin only."
+
     question = request.form["question"]
     answer = request.form["answer"]
     intent = request.form["intent"]
