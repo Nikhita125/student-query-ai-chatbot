@@ -201,10 +201,23 @@ def admin():
     chats = conn.execute(
         "SELECT id, username, question, answer FROM chat_history"
     ).fetchall()
+    
+    total_queries = conn.execute(
+        "SELECT COUNT(*) FROM chat_history"
+    ).fetchone()[0]
+
+    total_users = conn.execute(
+        "SELECT COUNT(*) FROM users"
+    ).fetchone()[0]
 
     conn.close()
 
-    return render_template("admin.html", chats=chats)
+    return render_template(
+        "admin.html",
+        chats=chats,
+        total_queries=total_queries,
+        total_users=total_users
+    )
 
 
 @app.route("/faq")
