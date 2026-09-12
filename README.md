@@ -83,3 +83,20 @@ http://127.0.0.1:5000
 
 This project demonstrates the use of Python, Flask, NLP, Machine Learning, and SQLite to build an intelligent student support system.
 
+## Screenshots
+
+### Login
+![Login](login.png)
+
+### Register
+![Register](register.png)
+
+### Chatbot
+![Chatbot](chatbot.png)
+
+### Admin Dashboard
+![Admin Dashboard](admin.png)
+
+### FAQ Management
+![FAQ Management](faq.png)
+
