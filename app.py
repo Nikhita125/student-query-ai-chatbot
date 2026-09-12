@@ -129,8 +129,9 @@ def admin():
 
     conn = sqlite3.connect("database/chatbot.db")
 
+    
     chats = conn.execute(
-        "SELECT * FROM chat_history"
+        "SELECT id, username, question, answer FROM chat_history"
     ).fetchall()
 
     conn.close()
