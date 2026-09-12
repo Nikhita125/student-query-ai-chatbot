@@ -1,25 +1,97 @@
-﻿question,intent
-When are the exams,exam
+question,intent
+When are the exams?,exam
 Tell me the exam date,exam
 What is the exam schedule,exam
+What is the date of the exams,exam
+When will exams begin,exam
+When will the semester exams start,exam
+Where can I find the exam schedule,exam
+When is the next examination,exam
+Give me the exam timetable,exam
+When are semester exams,exam
+Where can I check exam dates,exam
+Tell me when examinations are held,exam
 What courses are available,courses
 Which courses does the college offer,courses
 Tell me about CSE course,courses
+Which programs are offered,courses
+What branches are available,courses
+Which engineering courses are available,courses
+What departments does the college have,courses
+Is computer science available,courses
+What courses can students study,courses
+Tell me the available branches,courses
+What degree programs are offered,courses
+Which courses does the college provide,courses
 What are the college timings,timing
 When does college start,timing
 What time does college close,timing
+What are the working hours,timing
+What time do classes start,timing
+What time do classes end,timing
+What time should students come to college,timing
+What is the daily college schedule,timing
+When does the college open,timing
+When does the college close,timing
+What are class timings,timing
+Tell me the daily timings,timing
 When is the library open,library
 Tell me about library,library
 What are library timings,library
+What are the library hours,library
+When can I use the library,library
+What time does the library open,library
+What time does the library close,library
+Can students use the library,library
+Where is the college library,library
+Are library facilities available,library
+Can I borrow books from the library,library
+Does the library have study facilities,library
 Is hostel available,hostel
 Tell me about hostel,hostel
 Does the college have hostel,hostel
+Does the college provide accommodation,hostel
+Where is the hostel,hostel
+What hostel facilities are available,hostel
+How can I get hostel accommodation,hostel
+Is hostel facility available for students,hostel
+Are hostel rooms available,hostel
+Tell me about student accommodation,hostel
+Does the college have student accommodation,hostel
+What are the hostel facilities,hostel
 What is the fee,fees
 Tell me about college fees,fees
 How can I pay my fees,fees
+How much are the college fees,fees
+Where can I pay my fees,fees
+When should I pay the fees,fees
+What is the tuition fee,fees
+How can students pay fees,fees
+Tell me the fee details,fees
+What are the semester fees,fees
+Is online fee payment available,fees
+Where can I get fee information,fees
 What is the attendance requirement,attendance
 How much attendance is required,attendance
 What is the minimum attendance,attendance
+What percentage of attendance is required,attendance
+What is the minimum attendance percentage,attendance
+How much attendance should I maintain,attendance
+What happens if attendance is low,attendance
+Is 75 percent attendance compulsory,attendance
+How can I check my attendance,attendance
+What are the attendance rules,attendance
+Tell me the attendance requirement,attendance
+How many days should I attend college,attendance
 Tell me about placements,placement
 Does the college provide placements,placement
 What companies visit the college,placement
+Does the college have placement support,placement
+How are the placement opportunities,placement
+Which companies come for placements,placement
+When do placement drives start,placement
+How can students apply for placements,placement
+What is the placement process,placement
+Are placement training programs available,placement
+Which companies recruit students,placement
+Does the college provide placement training,placement
