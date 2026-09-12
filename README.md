@@ -45,6 +45,17 @@ FAQ / Database
 ↓
 Answer to Student
 
+## Project Structure
+
+- `app.py` – Flask application and web routes
+- `train_model.py` – Trains the machine learning model
+- `chatbot.py` – Chatbot prediction and responses
+- `database.py` – SQLite database setup
+- `dataset/` – Training dataset
+- `model/` – Trained ML model
+- `templates/` – HTML pages
+- `static/` – CSS and JavaScript files
+
 ## How AI Works
 
 Student Question
