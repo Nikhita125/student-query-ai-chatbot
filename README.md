@@ -110,3 +110,23 @@ Install the required packages:
 
 ```bash
 pip install -r requirements.txt
+
+## Screenshots
+
+### Login
+![Login](login.png)
+
+### Register
+![Register](register.png)
+
+### Chatbot
+![Chatbot](chatbot.png)
+
+### Chat History
+![Chat History](chat_history.png)
+
+### Admin Dashboard
+![Admin Dashboard](admin.png)
+
+### FAQ Management
+![FAQ Management](faq.png)
